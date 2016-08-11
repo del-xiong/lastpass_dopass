@@ -1,0 +1,1 @@
+LPServer.sitesAndNotes=function(){return{saveCustomNoteTemplate:function(a){LPServer.lmiapi.jsonRequest({url:"lmiapi/note-templates",data:a.params,success:function(b){a.success(LPServer.ext.translate("Custom Note Template: %1 created.",b.title),b)},userSupplied:a})}}}();
