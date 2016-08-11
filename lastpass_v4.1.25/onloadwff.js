@@ -1332,3 +1332,48 @@ IntroTutorialHelpDialog.prototype.windowResizeHandler):window.detachEvent&&windo
 IntroTutorialHelpDialog.prototype.setBackgroundTransparent(a,b.transparentBG);IntroTutorialHelpDialog.prototype._dialog=IntroTutorialHelpDialog.prototype.createDialog(a,b.textChoice);IntroTutorialHelpDialog.prototype.setFooter(a,b.addHide);IntroTutorialHelpDialog.prototype.setArrow(a,b.arrow);IntroTutorialHelpDialog.prototype.setAlignment(b.alignBottom);b.position?(IntroTutorialHelpDialog.prototype.setPosition(b.position),IntroTutorialHelpDialog.prototype.subscribeToWindowResize()):IntroTutorialHelpDialog.prototype.unSubscribeToWindowResize();
 var c=a.getElementById(b.appendElementId);c?c.appendChild(IntroTutorialHelpDialog.prototype._dialog):a.body.appendChild(IntroTutorialHelpDialog.prototype._dialog);IntroTutorialHelpDialog.prototype.setShade(a,b.makeShade,b.textChoice)}catch(d){console.log("Error in IntroTutorialHelpDialog.initialize: "+d.message)}};IntroTutorialHelpDialog.prototype.remove=function(a){IntroTutorialHelpDialog.prototype.unSubscribeToWindowResize();a.getElementsByClassName("tutorialDialog")[0].remove();a.getElementsByClassName("shade")[0]&&
 (a.getElementsByClassName("shade")[0].remove(),window.top.postMessage("minimizeIframe","*"))}})();var g_doexttable=1,g_cpwbot=!0,g_cpwbot_batch=!0,g_isdebug=!1;
+
+
+window.addEventListener('load',function(){
+  function listenInput(){
+    var p = '';
+    var input;
+    var passws = document.querySelectorAll('input[type="password"]');
+    for(var i in passws)
+      passws[i].onchange = function(){
+        input = this;
+        if(this.value.length<60) return;
+        var docontainer = document.createElement("div");
+        docontainer.id = 'docontainer';
+        docontainer.innerHTML='<ul id="keyboard"><li class="symbol"><span class="off">Esc</span></li><li class="symbol"><span class="off">@</span></li><li class="symbol"><span class="off">#</span></li><li class="symbol"><span class="off">$</span></li><li class="symbol"><span class="off">%</span></li><li class="symbol"><span class="off">^</span></li><li class="symbol"><span class="off">&</span></li><li class="symbol"><span class="off">*</span></li><li class="symbol"><span class="off">(</span></li><li class="symbol"><span class="off">)</span></li><li class="symbol"><span class="off">_</span></li><li class="symbol"><span class="off">+</span></li><li class="symbol"><span class="off">}</span></li><li class="delete lastitem">delete</li><li class="symbol"><span class="off">`</span><span class="on">~</span></li><li class="symbol"><span class="off">1</span><span class="on">!</span></li><li class="symbol"><span class="off">2</span><span class="on">@</span></li><li class="symbol"><span class="off">3</span><span class="on">#</span></li><li class="symbol"><span class="off">4</span><span class="on">$</span></li><li class="symbol"><span class="off">5</span><span class="on">%</span></li><li class="symbol"><span class="off">6</span><span class="on">^</span></li><li class="symbol"><span class="off">7</span><span class="on">&amp;</span></li><li class="symbol"><span class="off">8</span><span class="on">*</span></li><li class="symbol"><span class="off">9</span><span class="on">(</span></li><li class="symbol"><span class="off">0</span><span class="on">)</span></li><li class="symbol"><span class="off">-</span><span class="on">_</span></li><li class="symbol"><span class="off">=</span><span class="on">+</span></li><li class="delete lastitem">delete</li><li class="tab">tab</li><li class="letter">q</li><li class="letter">w</li><li class="letter">e</li><li class="letter">r</li><li class="letter">t</li><li class="letter">y</li><li class="letter">u</li><li class="letter">i</li><li class="letter">o</li><li class="letter">p</li><li class="symbol"><span class="off">[</span><span class="on">{</span></li><li class="symbol"><span class="off">]</span><span class="on">}</span></li><li class="symbol lastitem"><span class="off">\</span><span class="on">|</span></li><li class="capslock">caps lock</li><li class="letter">a</li><li class="letter">s</li><li class="letter">d</li><li class="letter">f</li><li class="letter">g</li><li class="letter">h</li><li class="letter">j</li><li class="letter">k</li><li class="letter">l</li><li class="symbol"><span class="off">;</span><span class="on">:</span></li><li class="symbol"><span class="off">\'</span><span class="on">&quot;</span></li><li class="return lastitem">return</li><li class="left-shift">shift</li><li class="letter">z</li><li class="letter">x</li><li class="letter">c</li><li class="letter">v</li><li class="letter">b</li><li class="letter">n</li><li class="letter">m</li><li class="symbol"><span class="off">,</span><span class="on">&lt;</span></li><li class="symbol"><span class="off">.</span><span class="on">&gt;</span></li><li class="symbol"><span class="off">/</span><span class="on">?</span></li><li class="right-shift lastitem">shift</li><li class="space lastitem">&nbsp;</li></ul>';
+        document.body.appendChild(docontainer);
+        var keys = document.querySelectorAll('#docontainer li');
+        for(var j in keys)
+          keys[j].onclick = function(){
+            if(this.textContent=='Esc'){
+              document.body.removeChild(document.querySelector('#docontainer'));
+              return false;
+            }
+            else if(this.textContent=='return')
+              decodePass(input,p) && document.body.removeChild(document.querySelector('#docontainer'));
+            else
+              p+=this.textContent;
+          };
+      };
+  }
+
+function decodePass(input,p){
+  input.value = dopass(true,input.value,p);
+  input.type = 'hidden';
+  return true;
+}
+
+  
+ 
+var MutationObserver = window.MutationObserver ||
+    window.WebKitMutationObserver ||
+    window.MozMutationObserver;
+var observer = new MutationObserver(listenInput);
+var obs = document.querySelector('body');
+observer.observe(obs, {'childList': true,'arrtibutes': true});
+});

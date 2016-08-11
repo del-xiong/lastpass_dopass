@@ -1,0 +1,113 @@
+
+#docontainer {
+position: fixed !important;
+z-index: 9999999;
+margin: auto;
+left:0;
+right:0;
+top:0;
+bottom:0;
+width:688px;
+height:280px;
+background: #fff !important;
+border: solid 0.5rem #24c1d6;
+}
+#write {
+margin: 0 0 5px;
+padding: 5px;
+width: 671px;
+height: 200px;
+font: 1em/1.5 Verdana, Sans-Serif;
+background: #fff;
+border: 1px solid #f9f9f9;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+}
+#keyboard {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+  #keyboard li {
+  float: left;
+  margin: 0 5px 5px 0;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #f9f9f9;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  color: #000 !important;
+  font-size: 14px !important;
+  }
+  #keyboard li span {
+    color: #000 !important;
+  }
+    .capslock, .tab, .left-shift {
+    clear: left;
+    }
+      #keyboard .tab, #keyboard .delete {
+      width: 70px;
+      }
+      #keyboard .capslock {
+      width: 80px;
+      }
+      #keyboard .return {
+      width: 77px;
+      }
+      #keyboard .left-shift {
+      width: 95px;
+      }
+      #keyboard .right-shift {
+      width: 109px;
+      }
+    .lastitem {
+    margin-right: 0;
+    }
+    .uppercase {
+    text-transform: uppercase;
+    }
+    #keyboard .space {
+    clear: left;
+    width: 681px;
+    }
+    .on {
+    display: none;
+    }
+    #keyboard li:hover {
+    position: relative;
+    top: 1px;
+    left: 1px;
+    border-color: #e5e5e5;
+    cursor: pointer;
+    }
+
+  #dopass_encode,#dopass_decode{
+    width: 80px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 20px;
+    display: block;
+    border: solid 1px #10943e;
+    background-color: #0da843;
+    color: #fff;
+    float: left;
+    text-align: center;
+    margin: 46px 20px 0 0;
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  #dopass_decode{
+    border: solid 1px #b81212;
+    background-color: #e00b0b;
+  }
+
+  #dopass_key_required{
+    text-indent: 20px;
+    color: red;
+    font-size: 24px;
+    font-weight: bold;
+    opacity: 0;
+  }

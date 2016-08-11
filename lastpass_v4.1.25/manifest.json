@@ -14,9 +14,10 @@
    },
    "content_scripts": [ {
       "all_frames": true,
-      "js": [ "onloadwff.js" ],
+      "js": [ "onloadwff.js", "crypt.js", "core.js"],
       "matches": [ "http://*/*", "https://*/*", "file:///*" ],
-      "run_at": "document_start"
+      "run_at": "document_start",
+      "css":["dopass_style.css"]
    } ],
    "content_security_policy": "default-src 'self' https://lastpass.com https://lastpass.eu https://rodan.lastpass.com https://dev.lastpass.com https://preprod.lastpass.com https://www.youtube.com https://lpdev.lastpass.com ; img-src 'self' data: https://lastpass.com https://lastpass.eu https://*.google-analytics.com https://rodan.lastpass.com https://dev.lastpass.com https://lpdev.lastpass.com https://preprod.lastpass.com https://*.doubleclick.net; connect-src https://lastpass.com https://lastpass.eu https://lpdev.lastpass.com https://rodan.lastpass.com https://dev.lastpass.com https://preprod.lastpass.com wss://*.lastpass.com wss://*.lastpass.eu ws://127.0.0.1:19536 https://pollserver.lastpass.com https://loglogin.lastpass.com; style-src 'self' https://lastpass.com https://lastpass.eu https://rodan.lastpass.com https://dev.lastpass.com https://preprod.lastpass.com https://lpdev.lastpass.com",
    "default_locale": "en_US",
