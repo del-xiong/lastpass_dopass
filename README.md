@@ -2,6 +2,7 @@
 
 lastpass_dopass最新版(v4.1.25)下载 http://git.oschina.net/splot/dopass/blob/lastpass_v4.1.25/lastpass_v4.1.25.zip
 
+QQ交流群 362705736
 
 Lastpass的dopass版本: [http://git.oschina.net/splot/dopass/tree/lastpass_v4.1.25/](http://git.oschina.net/splot/dopass/tree/lastpass_v4.1.25/)
 
