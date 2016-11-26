@@ -1,14 +1,14 @@
 #dopass
 
-lastpass_dopass最新版(v4.1.25)下载 http://git.oschina.net/splot/dopass/blob/lastpass_v4.1.25/lastpass_v4.1.25.zip
+lastpass_dopass最新版(v4.1.33)下载 http://git.oschina.net/splot/dopass/blob/lastpass_v4.1.33/lastpass_v4.1.33.zip
 
 QQ交流群 362705736
 
-Lastpass的dopass版本: [http://git.oschina.net/splot/dopass/tree/lastpass_v4.1.25/](http://git.oschina.net/splot/dopass/tree/lastpass_v4.1.25/)
+Lastpass的dopass版本: [http://git.oschina.net/splot/dopass/tree/lastpass_v4.1.33/](http://git.oschina.net/splot/dopass/tree/lastpass_v4.1.33/)
 
 支持chrome内核的浏览器都可安装(chrome、360、百度、搜狗...)
 
-git clone后切换到lastpass_v4.1.25分支或者直接下载lastpass_dopass最新版并解压，然后chrome以开发者模式加载文件夹即可使用
+git clone后切换到lastpass 最新分支或者直接下载lastpass_dopass最新版并解压，然后chrome以开发者模式加载文件夹即可使用
 
 在lastpass的站点账号编辑页面可以方便的对信息进行加解密，有效保护信息安全
 
