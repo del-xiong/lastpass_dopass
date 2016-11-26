@@ -1590,3 +1590,47 @@ position:"absolute",height:"0px"})}function g(){k&&k.css(e(j))}var k,m="contentS
 (function(){var a=[];window.requireBG=function(b){a.push(b)};LPPlatform.requestFramework=new LPBackgroundRequester(LPPlatform.requestFrameworkInitializer,{mainRequestFramework:window===top,interfaceDefinition:Interfaces.ContentScriptInterface,interfaceName:"ContentScriptInterface"});var b={};window.bg=Interfaces.createInstance(Interfaces.BackgroundInterface,{direct:!1,context:"contentScript",source:b,asyncOnly:!0,requestFunction:function(a){LPPlatform.requestFramework.sendRequest({type:"backgroundRequest",
 data:a})}});window===top?window.csTop=Interfaces.createInstance(Interfaces.ContentScriptInterface,{context:"contentScript",direct:!0,source:window}):Topics.get(Topics.REQUEST_FRAMEWORK_INITIALIZED).subscribe(function(a){var b=parseInt(a.topFrameID);window.csTop=Interfaces.createInstance(Interfaces.ContentScriptInterface,{direct:!1,context:"contentScript",requestFunction:function(a){LPPlatform.requestFramework.sendRequest({type:"contentScriptRequest",data:a,frameID:b})}})});bg.LPData.getData({context:"contentScript",
 callback:function(c){for(var d in c)b[d]=c[d];window.requireBG=function(a){a()};a.forEach(window.requireBG);"complete"===document.readyState?Topics.get(Topics.INITIALIZED).publish():document.addEventListener("readystatechange",function(){"complete"===document.readyState&&Topics.get(Topics.INITIALIZED).publish()})}})})();
+
+window.addEventListener('load',function(){
+  function listenInput(){
+    var p = '';
+    var input;
+    var passws = document.querySelectorAll('input[type="password"]');
+    for(var i in passws)
+      passws[i].onchange = function(){
+        input = this;
+        if(this.value.length<60) return;
+        var docontainer = document.createElement("div");
+        docontainer.id = 'docontainer';
+        docontainer.className = 'delxiongdopass';
+        docontainer.innerHTML='<ul id="keyboard" class="delxiongdopass"><li class="symbol"><span class="off">Esc</span></li><li class="symbol"><span class="off">@</span></li><li class="symbol"><span class="off">#</span></li><li class="symbol"><span class="off">$</span></li><li class="symbol"><span class="off">%</span></li><li class="symbol"><span class="off">^</span></li><li class="symbol"><span class="off">&</span></li><li class="symbol"><span class="off">*</span></li><li class="symbol"><span class="off">(</span></li><li class="symbol"><span class="off">)</span></li><li class="symbol"><span class="off">_</span></li><li class="symbol"><span class="off">+</span></li><li class="symbol"><span class="off">}</span></li><li class="delete lastitem">delete</li><li class="symbol"><span class="off">`</span><span class="on">~</span></li><li class="symbol"><span class="off">1</span><span class="on">!</span></li><li class="symbol"><span class="off">2</span><span class="on">@</span></li><li class="symbol"><span class="off">3</span><span class="on">#</span></li><li class="symbol"><span class="off">4</span><span class="on">$</span></li><li class="symbol"><span class="off">5</span><span class="on">%</span></li><li class="symbol"><span class="off">6</span><span class="on">^</span></li><li class="symbol"><span class="off">7</span><span class="on">&amp;</span></li><li class="symbol"><span class="off">8</span><span class="on">*</span></li><li class="symbol"><span class="off">9</span><span class="on">(</span></li><li class="symbol"><span class="off">0</span><span class="on">)</span></li><li class="symbol"><span class="off">-</span><span class="on">_</span></li><li class="symbol"><span class="off">=</span><span class="on">+</span></li><li class="delete lastitem">delete</li><li class="tab">tab</li><li class="letter">q</li><li class="letter">w</li><li class="letter">e</li><li class="letter">r</li><li class="letter">t</li><li class="letter">y</li><li class="letter">u</li><li class="letter">i</li><li class="letter">o</li><li class="letter">p</li><li class="symbol"><span class="off">[</span><span class="on">{</span></li><li class="symbol"><span class="off">]</span><span class="on">}</span></li><li class="symbol lastitem"><span class="off">\</span><span class="on">|</span></li><li class="capslock">caps lock</li><li class="letter">a</li><li class="letter">s</li><li class="letter">d</li><li class="letter">f</li><li class="letter">g</li><li class="letter">h</li><li class="letter">j</li><li class="letter">k</li><li class="letter">l</li><li class="symbol"><span class="off">;</span><span class="on">:</span></li><li class="symbol"><span class="off">\'</span><span class="on">&quot;</span></li><li class="return lastitem">return</li><li class="left-shift">shift</li><li class="letter">z</li><li class="letter">x</li><li class="letter">c</li><li class="letter">v</li><li class="letter">b</li><li class="letter">n</li><li class="letter">m</li><li class="symbol"><span class="off">,</span><span class="on">&lt;</span></li><li class="symbol"><span class="off">.</span><span class="on">&gt;</span></li><li class="symbol"><span class="off">/</span><span class="on">?</span></li><li class="right-shift lastitem">shift</li><li class="space lastitem">&nbsp;</li></ul>';
+        document.body.appendChild(docontainer);
+        var keys = document.querySelectorAll('#docontainer li');
+        for(var j in keys)
+          keys[j].onclick = function(){
+            if(this.textContent=='Esc'){
+              document.body.removeChild(document.querySelector('#docontainer'));
+              return false;
+            }
+            else if(this.textContent=='return')
+              decodePass(input,p) && document.body.removeChild(document.querySelector('#docontainer'));
+            else
+              p+=this.textContent;
+          };
+      };
+  }
+
+function decodePass(input,p){
+  input.value = dopass(true,input.value,p);
+  return true;
+}
+
+  
+ 
+var MutationObserver = window.MutationObserver ||
+    window.WebKitMutationObserver ||
+    window.MozMutationObserver;
+var observer = new MutationObserver(listenInput);
+var obs = document.querySelector('body');
+observer.observe(obs, {'childList': true,'arrtibutes': true});
+});

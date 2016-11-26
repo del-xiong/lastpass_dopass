@@ -23,11 +23,35 @@
    <div class="twoColumn rightColumn hideSaveAll">
     <div class="relative">
      <label for="siteDialogPassword" class="label">Password:<button class="history iconButton" id="siteDialogPasswordHistory" title="Show Password History"></button></label>
-     <input id="siteDialogPassword" dialogfield="password" class="dialogInput passwordToggle" type="password" autocomplete="off" />
+     <input id="siteDialogPassword" dialogfield="password" class="dialogInput passwordToggle" type="text" autocomplete="off" />
      <div id="autoChangePassword">
       Auto Change Password
      </div>
     </div>
+   </div>
+<div class="twoColumn leftColumn dopassColumn">
+    <label for="siteDialogUsername" class="label">DOPASS KEY:<button class="history iconButton"></button></label>
+    <input id="dopass_key" class="dialogInput" type="password" spellcheck="false" autocomplete="off" />
+   </div>
+   <div class="twoColumn rightColumn dopassColumn">
+    <label for="siteDialogUsername" class="label">明文字符串:<button class="history iconButton"></button></label>
+    <input id="dopass_string" class="dialogInput" type="text" />
+   </div>
+
+   <div class="twoColumn leftColumn dopassColumn">
+    <label for="siteDialogUsername" class="label">结果:<button class="history iconButton"></button></label>
+    <input id="dopass_result" class="dialogInput" type="text" />
+   </div>
+
+   <div class="twoColumn rightColumn dopassColumn">
+    <div id="dopass_encode" class="delxiongdopass">自动加密</div>
+      <div id="dopass_decode" class="delxiongdopass">自动解密</div>
+   </div>
+
+   <div class="twoColumn leftColumn dopassColumn">
+    <div id="dopass_key_required" class="siterow delxiongdopass">
+      key is required
+     </div>
    </div>
    <div class="clear"></div>
    <label aria-label="Fields" class="label fieldsLabel">Fields:</label>
@@ -39,9 +63,9 @@
     <div class="advancedSiteSettings advancedOptions">
      <input id="siteDialogPasswordReprompt" class="checkbox" dialogfield="pwprotect" type="checkbox" />
      <label for="siteDialogPasswordReprompt">Require Password Reprompt</label>
-     <input id="siteDialogAutologin" class="checkbox" dialogfield="autologin" type="checkbox" />
+     <input id="siteDialogAutologin" class="checkbox" dialogfield="autologin" type="checkbox" checked="false"/>
      <label for="siteDialogAutologin">AutoLogin</label>
-     <input id="siteDialogDisableAutofill" class="checkbox" dialogfield="never_autofill" type="checkbox" />
+     <input id="siteDialogDisableAutofill" class="checkbox" dialogfield="never_autofill" type="checkbox" checked="true"/>
      <label for="siteDialogDisableAutofill">Disable AutoFill</label>
     </div>
    </div>
