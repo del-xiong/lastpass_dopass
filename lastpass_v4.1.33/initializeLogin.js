@@ -1,0 +1,1 @@
+(function(a){a.shouldOpenDropdown4_0()?window.location="extensionDropdown.html":a.shouldOpenLogin4_0()||(window.location="lp_toolstrip.html?browseraction=1");window.bg=a.LPPlatform.getBackgroundInterface()})(chrome.extension.getBackgroundPage());window.addEventListener("DOMContentLoaded",function(){Topics.get(Topics.INITIALIZED).publish();ExtensionDropdown.open()});

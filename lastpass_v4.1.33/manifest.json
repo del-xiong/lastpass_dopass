@@ -1,0 +1,71 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+  "name": "LastPass: Free Password Manager",
+  "short_name": "LastPass",
+  "author": "LastPass",
+  "version": "4.1.33",
+  "minimum_chrome_version": "18.0",
+  "description": "__MSG_appDesc__",
+  "icons": {"16":"icon2.png","32":"icon2_2x.png","48":"images/icon48.png","128":"images/icon128.png"},
+  
+  "default_locale": "en_US",
+  "omnibox": { "keyword": "lp" },
+  "permissions": [
+    "tabs",
+    "idle",
+    "notifications",
+    "contextMenus",
+    "unlimitedStorage",
+    "webRequest",
+    "webRequestBlocking",
+    "http://*/*",
+    "https://*/*",
+    "chrome://favicon/*"
+  ],
+  "optional_permissions": [
+    "cookies",
+    "nativeMessaging",
+    "privacy",
+    "history"
+  ],
+  "background": {
+    "page": "background.html",
+    "persistent": true
+  },
+  "content_security_policy": "default-src 'self' https://1min-ui-prod.service.lastpass.com https://lastpass.com https://lastpass.eu https://rodan.lastpass.com https://lpdev.lastpass.com https://preprod.lastpass.com https://www.youtube.com; img-src 'self' data: https://lastpass.com https://lastpass.eu chrome://favicon https://*.google-analytics.com https://rodan.lastpass.com https://lpdev.lastpass.com https://preprod.lastpass.com https://*.doubleclick.net; connect-src https://ux.lastpass.com https://lastpass.com https://lastpass.eu https://rodan.lastpass.com https://lpdev.lastpass.com https://preprod.lastpass.com wss://*.lastpass.com wss://*.lastpass.eu ws://127.0.0.1:19536 https://pollserver.lastpass.com https://loglogin.lastpass.com; style-src 'self' https://lastpass.com https://lastpass.eu https://rodan.lastpass.com https://lpdev.lastpass.com https://preprod.lastpass.com",
+  "content_scripts": [
+  {"matches":["http://*/*","https://*/*", "file:///*"], "js":["onloadwff.js"], "all_frames":true, "run_at": "document_start"},
+  {"matches": ["https://lastpass.eu/*", "https://lastpass.com/*"], "js": ["provisioning/websiteConnectorInit.js"], "all_frames": true, "run_at": "document_start"},
+  {"matches": ["https://lastpass.eu/*", "https://lastpass.com/*"], "js": ["provisioning/websiteConnector.js"], "all_frames": true, "run_at": "document_end"},
+  { "matches": ["https://1min-ui-prod.service.lastpass.com/*"], "js": ["1minsignup/chrome/websiteConnector.js"], "all_frames": true, "run_at": "document_end"}
+  ],  "browser_action":  {
+    "default_icon": {"38":"icon_gray2_2x.png", "19":"icon_gray2.png"},
+    "default_title": "LastPass",
+    "default_popup": "extensionLogin.html"
+  },
+  
+  
+  "requirements": {
+    "plugins": {
+      
+    }
+  },
+  "options_page":    "tabDialog.html?dialog=preferences&cmd=open",
+  "manifest_version": 2,
+  "web_accessible_resources": [
+    "overlay.html",
+    "contentScriptDialog.html",
+    "backgroundFrame.html",
+    "contentScriptPopup.html",
+    "general.css",
+    "popupfilltab.html",
+    "tip_context.html",
+    "images/icon48.png",
+    "images/formfill16x16.png",
+    "images/generate16x16.png",
+    "images/sites16x16.png",
+    "images/close16x16.png",
+    "1minsignup/doNotCloseOverlay.html"
+  ]
+}

@@ -1,0 +1,1 @@
+bg=chrome.extension.getBackgroundPage().LPPlatform.getBackgroundInterface();document.addEventListener("DOMContentLoaded",function(){Topics.get(Topics.INITIALIZED).publish();bg.get_selected_tab(null,function(a){bg.setcurrenttabid(a.id);bg.setcurrenturl(bg.gettaburl(a));ExtensionDropdown.open()})});
